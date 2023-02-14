@@ -1,7 +1,7 @@
-import { ContenedorMongoDB } from "../contenedores/ContenedorMongoDB.js";
-import { ModeloProductos } from "../models/productos.js";
+const ContenedorMongoDB = require("../contenedores/ContenedorMongoDB");
+const ModeloProductos = require("../models/productos");
 
-export class ProductosDaoMongoDB extends ContenedorMongoDB {
+class ProductosDaoMongoDB extends ContenedorMongoDB {
   constructor() {
     super({
       name: 'productos',
@@ -10,4 +10,4 @@ export class ProductosDaoMongoDB extends ContenedorMongoDB {
   }
 }
 
-export default ProductosDaoMongoDB;
+module.exports = ProductosDaoMongoDB;

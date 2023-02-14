@@ -1,18 +1,6 @@
-import mongoose from 'mongoose';
-import { ModeloMensajes } from '../models/mensajes.js';
-import { ModeloProductos } from '../models/productos.js';
-import winston from 'winston';
-
-/* Winston configuration */
-
-const logger = winston.createLogger({
-  level: 'warn',
-  transports: [
-    new winston.transports.Console({ level: 'info' }),
-    new winston.transports.File({ filename: 'warn.log', level: 'warn' }),
-    new winston.transports.File({ filename: 'info.log', level: 'error' }),
-  ],
-});
+const mongoose = require("mongoose");
+const ModeloMensajes = require("../models/mensajes");
+const ModeloProductos = require("../models/productos");
 
 function validacionId(array, id) {
   const index = array.findIndex((object) => object.id == id);
@@ -42,8 +30,8 @@ class ContenedorMongoDB {
       });
       await productoNuevo.save();
     } catch {
-      logger.log('error', 'Se ha producido un error al guardar el producto');
-      return 'Se ha producido un error';
+      console.log("Se ha producido un error");
+      return "Se ha producido un error";
     }
   }
 
@@ -62,10 +50,10 @@ class ContenedorMongoDB {
       });
       await mensajeNuevo.save();
     } catch {
-      logger.log('error', 'Se ha producido un error al guardar el mensaje');
-      return 'Se ha producido un error';
+      console.log("Se ha producido un error");
+      return "Se ha producido un error";
     }
   }
 }
 
-export { ContenedorMongoDB };
+module.exports = ContenedorMongoDB;

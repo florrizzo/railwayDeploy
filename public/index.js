@@ -47,9 +47,7 @@ socket.on('msg-list', (data) => {
         <span class="bolded">${element.author.id}</span>: <em>${element.text}</em>
         <div/>`;
   });
-  compresion = Math.round(100 - (parseInt(data[2]) * 100) / (parseInt(data[1])));
   document.getElementById('div-list-msgs').innerHTML = html;
-  document.getElementById('compresion').innerHTML = compresion;
 });
 
 function enviarMsg() {
